@@ -12,6 +12,7 @@ https://github.com/user-attachments/assets/7e3d5e3c-551a-4458-8dda-06cc3907dd92
 - [grim](https://sr.ht/~emersion/grim/)
 - [imagemagick](https://github.com/ImageMagick/ImageMagick)
 - [wl-clipboard](https://github.com/bugaevc/wl-clipboard)
+- [satty](https://github.com/Satty-org/Satty)
 
 ## Installation
 
