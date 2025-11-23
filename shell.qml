@@ -98,9 +98,9 @@ FreezeScreen {
         const outputPath = settings.saveToDisk ? `${picturesDir}/screenshot-${timestamp}.png` : root.tempPath
 
         screenshotProcess.command = ["sh", "-c",
-            `magick "${tempPath}" -crop ${scaledWidth}x${scaledHeight}+${scaledX}+${scaledY} "${outputPath}" && ` +
-            `wl-copy < "${outputPath}" && ` +
-            `rm "${tempPath}"`
+					`magick "${tempPath}" -crop ${scaledWidth}x${scaledHeight}+${scaledX}+${scaledY} "${tempPath}" && ` +
+					`satty -f "${tempPath}" -o "${outputPath}"; ` +
+					`[ -f "${tempPath}" ] && rm "${tempPath}"`
         ]
 
         screenshotProcess.running = true
@@ -113,7 +113,7 @@ FreezeScreen {
         anchors.fill: parent
  
         dimOpacity: 0.6
-        borderRadius: 10.0
+        borderRadius: 20.0
         outlineThickness: 2.0
  
         onRegionSelected: (x, y, width, height) => {
@@ -128,7 +128,7 @@ FreezeScreen {
  
         monitor: root.hyprlandMonitor
         dimOpacity: 0.6
-        borderRadius: 10.0
+        borderRadius: 20.0
         outlineThickness: 2.0
  
         onRegionSelected: (x, y, width, height) => {
@@ -199,25 +199,6 @@ FreezeScreen {
 				}
 			}
 			
-			Row {
-				id: switchRow
-				spacing: 8
-				anchors.verticalCenter: buttonRow.verticalCenter
-
-				Text {
-					text: "Save to disk"
-					color: "#ffffff"
-					font.pixelSize: 14
-					verticalAlignment: Text.AlignVCenter
-					anchors.verticalCenter: parent.verticalCenter
-				}
-
-				Switch {
-					id: saveSwitch
-					checked: settings.saveToDisk
-					onCheckedChanged: settings.saveToDisk = checked
-				}
-			}
 		}
     }
 }

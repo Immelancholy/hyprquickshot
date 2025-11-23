@@ -1,4 +1,10 @@
-{ pkgs ? import <nixpkgs> { }, lib, ... }: pkgs.stdenv.mkDerivation rec {
+{
+  pkgs ? import <nixpkgs> {},
+  lib,
+  SattyPackage ? pkgs.satty,
+  ...
+}:
+pkgs.stdenv.mkDerivation rec {
   pname = "hyprquickshot";
   version = "0.1.0";
 
@@ -25,10 +31,11 @@
 
     wrapProgram $out/bin/hyprquickshot \
       --set PATH "$PATH:${lib.makeBinPath [
-        pkgs.quickshell
-        pkgs.grim
-        pkgs.imagemagick
-        pkgs.wl-clipboard
-      ]}"
+      pkgs.quickshell
+      pkgs.grim
+      pkgs.imagemagick
+      pkgs.wl-clipboard
+      ''${SattyPackage}''
+    ]}"
   '';
 }
