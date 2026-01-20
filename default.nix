@@ -10,6 +10,7 @@ pkgs.stdenv.mkDerivation rec {
 
   nativeBuildInputs = with pkgs; [
     makeWrapper
+    kdePackages.wrapQtAppsHook
   ];
   buildInputs = with pkgs; [
     quickshell
