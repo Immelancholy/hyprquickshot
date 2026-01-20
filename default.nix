@@ -16,6 +16,8 @@ pkgs.stdenv.mkDerivation rec {
     grim
     imagemagick
     wl-clipboard
+    kdePackages.kirigami
+    kdePackages.kirigami-addons
   ];
 
   src = pkgs.lib.cleanSource ./.;
